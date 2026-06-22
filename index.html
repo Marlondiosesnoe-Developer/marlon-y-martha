@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marlon & Martha | Nos Casamos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Tangerine:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f7f1e7;
+    --paper:#fbf6ec;
+    --gold:#b8924a;
+    --gold-dark:#8c6d34;
+    --ink:#3c3530;
+    --ink-soft:#6b5f54;
+    --rose:#c98a8a;
+    --line:#d8c7a3;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background-color:var(--cream);
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(184,146,74,0.05), transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(184,146,74,0.05), transparent 40%);
+    color:var(--ink);
+    font-family:'Montserrat', sans-serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    max-width:480px;
+    margin:0 auto;
+    position:relative;
+    overflow:hidden;
+  }
+
+  section{
+    padding:70px 28px;
+    position:relative;
+  }
+
+  /* ---------- Reveal animation ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.show{
+    opacity:1;
+    transform:translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+  }
+
+  /* ---------- Typography ---------- */
+  .script{
+    font-family:'Tangerine', cursive;
+    color:var(--gold-dark);
+    line-height:1;
+  }
+  h2.script{ font-size:64px; }
+
+  .eyebrow{
+    font-family:'Montserrat', sans-serif;
+    font-size:11px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--gold-dark);
+    font-weight:500;
+  }
+
+  .display{
+    font-family:'Cormorant Garamond', serif;
+    color:var(--ink);
+    letter-spacing:1px;
+  }
+
+  p.body-text{
+    font-family:'Cormorant Garamond', serif;
+    font-size:18px;
+    line-height:1.7;
+    color:var(--ink-soft);
+  }
+
+  .divider{
+    width:46px;
+    height:1px;
+    background:var(--gold);
+    margin:18px auto;
+  }
+
+  .ring-icon{
+    width:34px;
+    opacity:0.8;
+    margin:0 auto;
+    display:block;
+  }
+
+  /* ================= HERO ================= */
+  .hero{
+    padding:0;
+    text-align:center;
+  }
+
+  .hero-frame-wrap{
+    position:relative;
+    padding:48px 32px 30px;
+    background:
+      linear-gradient(180deg, rgba(184,146,74,0.07), transparent 60%);
+  }
+
+  .hero-frame{
+    position:relative;
+    width:100%;
+    border-radius:160px 160px 18px 18px / 220px 220px 18px 18px;
+    overflow:hidden;
+    border:2px solid var(--gold);
+    box-shadow:0 0 0 6px var(--paper), 0 0 0 7px var(--gold);
+    aspect-ratio:3/4;
+  }
+  .hero-frame img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+
+  .hero-names{
+    margin-top:36px;
+  }
+  .hero-names .script{ font-size:46px; }
+  .hero-amp{
+    font-size:22px;
+    color:var(--gold);
+    margin:2px 0;
+  }
+  .hero-tagline{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:22px;
+    color:var(--ink);
+    margin-top:6px;
+    letter-spacing:1px;
+  }
+
+  /* ================= INTRO ================= */
+  .intro{ text-align:center; }
+  .intro p.body-text{ margin-top:18px; }
+
+  /* ================= COUNTDOWN ================= */
+  .countdown-section{
+    text-align:center;
+    background:linear-gradient(180deg, transparent, rgba(184,146,74,0.06), transparent);
+  }
+  .countdown-grid{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    margin-top:28px;
+  }
+  .count-box{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:10px;
+    width:74px;
+    padding:14px 0 10px;
+  }
+  .count-num{
+    font-family:'Cormorant Garamond', serif;
+    font-size:32px;
+    font-weight:600;
+    color:var(--gold-dark);
+    line-height:1;
+  }
+  .count-label{
+    font-size:9px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-top:6px;
+    display:block;
+  }
+
+  /* ================= PARENTS ================= */
+  .parents{ text-align:center; }
+  .parents-blessing{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:17px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  .parents-grid{
+    margin-top:30px;
+    display:flex;
+    flex-direction:column;
+    gap:26px;
+  }
+  .parent-group .eyebrow{ margin-bottom:8px; }
+  .parent-group p{
+    font-family:'Cormorant Garamond', serif;
+    font-size:18px;
+    color:var(--ink);
+    line-height:1.6;
+  }
+
+  /* ================= SAVE THE DATE ================= */
+  .savedate{ text-align:center; }
+  .savedate .display{
+    font-size:30px;
+    font-weight:500;
+  }
+  .savedate-sub{
+    font-family:'Montserrat', sans-serif;
+    letter-spacing:3px;
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-top:6px;
+  }
+  .savedate-time{
+    font-family:'Cormorant Garamond', serif;
+    font-size:20px;
+    color:var(--gold-dark);
+    margin-top:10px;
+  }
+
+  .calendar{
+    margin-top:30px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:20px 14px;
+  }
+  .cal-month{
+    font-family:'Cormorant Garamond', serif;
+    font-size:19px;
+    margin-bottom:14px;
+    color:var(--ink);
+  }
+  .cal-grid{
+    display:grid;
+    grid-template-columns:repeat(7, 1fr);
+    gap:6px;
+    font-size:12px;
+  }
+  .cal-grid span{
+    padding:7px 0;
+    color:var(--ink-soft);
+  }
+  .cal-head{
+    font-weight:600;
+    color:var(--gold-dark);
+    font-size:10px;
+    letter-spacing:1px;
+  }
+  .cal-day{
+    border-radius:50%;
+  }
+  .cal-day.highlight{
+    background:none;
+    color:var(--gold-dark);
+    font-weight:600;
+  }
+
+  /* ================= RING PHOTO ================= */
+  .ring-photo{
+    text-align:center;
+  }
+  .ring-photo-frame{
+    width:230px;
+    height:230px;
+    margin:0 auto;
+    border-radius:50%;
+    overflow:hidden;
+    border:1px solid var(--gold);
+    box-shadow:0 0 0 8px var(--paper), 0 0 0 9px rgba(184,146,74,0.4);
+  }
+  .ring-photo-frame img{
+    width:100%; height:100%; object-fit:cover;
+  }
+
+  /* ================= CEREMONY ================= */
+  .ceremony{ text-align:center; }
+  .ceremony .display{
+    font-size:24px;
+    font-weight:600;
+    letter-spacing:2px;
+    line-height:1.4;
+  }
+  .ceremony-time{
+    font-family:'Cormorant Garamond', serif;
+    font-size:21px;
+    color:var(--gold-dark);
+    margin-top:10px;
+  }
+  .ceremony-address{
+    font-family:'Cormorant Garamond', serif;
+    font-size:16px;
+    color:var(--ink-soft);
+    margin-top:8px;
+    line-height:1.5;
+  }
+  .btn{
+    display:inline-block;
+    margin-top:18px;
+    padding:11px 26px;
+    border:1px solid var(--gold);
+    border-radius:30px;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--gold-dark);
+    text-decoration:none;
+    background:transparent;
+    transition:background 0.3s ease, color 0.3s ease;
+    cursor:pointer;
+    font-family:'Montserrat', sans-serif;
+  }
+  .btn:hover{
+    background:var(--gold);
+    color:#fff;
+  }
+  .btn.filled{
+    background:var(--gold);
+    color:#fff;
+  }
+  .btn.filled:hover{
+    background:var(--gold-dark);
+  }
+
+  .map-wrap{
+    margin-top:24px;
+    border-radius:14px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    box-shadow:0 6px 18px rgba(60,53,48,0.08);
+  }
+  .map-wrap iframe{
+    width:100%;
+    height:230px;
+    border:0;
+    display:block;
+  }
+
+  /* ================= ITINERARY ================= */
+  .itinerary{ text-align:center; }
+  .itinerary-list{
+    margin-top:34px;
+    position:relative;
+    text-align:left;
+    padding-left:8px;
+  }
+  .itinerary-list::before{
+    content:'';
+    position:absolute;
+    left:23px;
+    top:6px;
+    bottom:6px;
+    width:1px;
+    background:var(--line);
+  }
+  .iti-item{
+    display:flex;
+    align-items:flex-start;
+    gap:18px;
+    padding:14px 0;
+    position:relative;
+  }
+  .iti-icon{
+    width:46px;
+    height:46px;
+    min-width:46px;
+    border-radius:50%;
+    background:var(--paper);
+    border:1px solid var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    z-index:1;
+  }
+  .iti-text .iti-time{
+    font-family:'Cormorant Garamond', serif;
+    font-size:17px;
+    color:var(--gold-dark);
+    font-weight:600;
+  }
+  .iti-text .iti-label{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-top:2px;
+    letter-spacing:0.3px;
+  }
+
+  /* ================= GALLERY ================= */
+  .gallery{ text-align:center; }
+  .gallery-grid{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    grid-template-rows:auto auto;
+    gap:10px;
+  }
+  .gallery-grid img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:10px;
+    display:block;
+  }
+  .gallery-grid .g1{ grid-row:1 / 3; aspect-ratio:0.8/1; object-position: 50% 30%; }
+  .gallery-grid .g2{ aspect-ratio:1.3/1; }
+  .gallery-grid .g3{ aspect-ratio:1.3/1; }
+
+  /* ================= GIFTS ================= */
+  .gifts{ text-align:center; }
+  .gift-icon{
+    width:40px;
+    margin:18px auto 0;
+    display:block;
+    opacity:0.85;
+  }
+  .accounts{
+    margin-top:28px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:30px 24px;
+    color:var(--ink);
+  }
+  .acc-block{
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .acc-block:last-of-type{ border-bottom:none; }
+  .acc-bank{
+    font-family:'Cormorant Garamond', serif;
+    font-size:20px;
+    letter-spacing:2px;
+    color:var(--gold-dark);
+    font-weight:600;
+  }
+  .acc-row{
+    margin-top:8px;
+    font-size:12px;
+    color:var(--ink-soft);
+    letter-spacing:0.3px;
+  }
+  .acc-num{
+    font-family:'Cormorant Garamond', serif;
+    font-size:16px;
+    color:var(--ink);
+    letter-spacing:1px;
+  }
+  .copy-btn{
+    background:none;
+    border:1px solid var(--gold);
+    color:var(--gold-dark);
+    font-size:9px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    padding:4px 10px;
+    border-radius:20px;
+    margin-left:8px;
+    cursor:pointer;
+    font-family:'Montserrat', sans-serif;
+    vertical-align:middle;
+  }
+  .copy-btn:hover{ background:var(--gold); color:#fff; }
+  .copy-btn.copied{ border-color:var(--gold-dark); color:var(--gold-dark); }
+
+  /* ================= ROMANTIC PHOTO ================= */
+  .romantic-photo{
+    padding:0;
+  }
+  .romantic-photo img{
+    width:100%;
+    display:block;
+    border-radius:16px;
+  }
+
+  /* ================= SONGS ================= */
+  .songs{ text-align:center; }
+  .songs p.body-text{ margin-top:16px; }
+
+  /* ================= CONFIRM ================= */
+  .confirm{ text-align:center; padding-bottom:90px; }
+  .confirm p.body-text{ margin-top:14px; }
+  .confirm-date{
+    font-family:'Cormorant Garamond', serif;
+    font-size:19px;
+    color:var(--gold-dark);
+    margin-top:6px;
+    letter-spacing:1px;
+  }
+
+  footer{
+    text-align:center;
+    padding:30px 0 50px;
+    font-size:11px;
+    letter-spacing:2px;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+  }
+
+  /* floating whatsapp confirm button */
+  .float-confirm{
+    position:fixed;
+    bottom:18px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:50;
+    background:var(--gold-dark);
+    color:#fff;
+    border:none;
+    padding:13px 26px;
+    border-radius:40px;
+    font-family:'Montserrat', sans-serif;
+    font-size:12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    box-shadow:0 8px 24px rgba(60,53,48,0.3);
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    max-width:90%;
+  }
+  .float-confirm svg{ width:16px; height:16px; fill:#fff; }
+
+  @media (min-width:481px){
+    .float-confirm{ left:auto; right:24px; transform:none; }
+  }
+
+  /* floating music toggle */
+  .music-toggle{
+    position:fixed;
+    top:18px;
+    right:18px;
+    z-index:50;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:var(--paper);
+    border:1px solid var(--gold);
+    box-shadow:0 4px 14px rgba(60,53,48,0.18);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+  }
+  .music-toggle svg{
+    width:18px;
+    height:18px;
+    fill:var(--gold-dark);
+  }
+  .music-toggle.is-playing{
+    animation:music-pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes music-pulse{
+    0%, 100%{ box-shadow:0 4px 14px rgba(60,53,48,0.18); }
+    50%{ box-shadow:0 4px 14px rgba(184,146,74,0.45); }
+  }
+  #yt-player-wrap{
+    position:fixed;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    opacity:0;
+    pointer-events:none;
+    top:0; left:0;
+  }
+
+  /* Welcome Screen */
+  .welcome-screen{
+    position:fixed;
+    top:0; left:0; width:100%; height:100vh;
+    background:var(--cream);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    z-index:100;
+    transition:opacity 1s ease, visibility 1s ease;
+  }
+  .welcome-screen.hidden{
+    opacity:0;
+    visibility:hidden;
+  }
+  .welcome-img{
+    width:80%;
+    max-width:400px;
+    border-radius:16px;
+    margin-bottom:30px;
+  }
+  .welcome-title{
+    font-family:'Tangerine', cursive;
+    color:var(--gold-dark);
+    font-size:50px;
+    margin-bottom:10px;
+  }
+  .welcome-sub{
+    font-family:'Cormorant Garamond', serif;
+    font-size:18px;
+    color:var(--ink);
+    margin-bottom:30px;
+    text-align:center;
+  }
+  .welcome-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 30px;
+    border:2px solid var(--gold);
+    border-radius:30px;
+    font-family:'Montserrat', sans-serif;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--gold-dark);
+    background:transparent;
+    cursor:pointer;
+    transition:all 0.3s ease;
+  }
+  .welcome-btn:hover{
+    background:var(--gold);
+    color:#fff;
+  }
+
+  /* Song Suggestion Modal */
+  .modal-overlay{
+    position:fixed;
+    top:0; left:0; width:100%; height:100vh;
+    background:rgba(60,53,48,0.7);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:200;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity 0.3s ease, visibility 0.3s ease;
+    padding:20px;
+  }
+  .modal-overlay.show{
+    opacity:1;
+    visibility:visible;
+  }
+  .modal{
+    background:var(--paper);
+    border-radius:16px;
+    padding:30px 24px;
+    width:100%;
+    max-width:400px;
+    border:1px solid var(--line);
+    position:relative;
+  }
+  .modal-close{
+    position:absolute;
+    top:15px; right:15px;
+    background:none;
+    border:none;
+    font-size:24px;
+    color:var(--ink-soft);
+    cursor:pointer;
+  }
+  .modal-title{
+    font-family:'Cormorant Garamond', serif;
+    font-size:24px;
+    color:var(--ink);
+    margin-bottom:8px;
+    text-align:center;
+  }
+  .modal-sub{
+    font-family:'Montserrat', sans-serif;
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-bottom:20px;
+    text-align:center;
+    letter-spacing:1px;
+  }
+  .modal-input{
+    width:100%;
+    padding:12px 16px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    font-family:'Montserrat', sans-serif;
+    font-size:14px;
+    color:var(--ink);
+    background:var(--cream);
+    margin-bottom:16px;
+    outline:none;
+    box-sizing:border-box;
+  }
+  .modal-input:focus{
+    border-color:var(--gold);
+  }
+  .modal-btn{
+    width:100%;
+    padding:12px;
+    background:var(--gold);
+    border:none;
+    border-radius:30px;
+    font-family:'Montserrat', sans-serif;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#fff;
+    cursor:pointer;
+    transition:background 0.3s ease;
+  }
+  .modal-btn:hover{
+    background:var(--gold-dark);
+  }
+</style>
+</head>
+<body>
+
+  <!-- Welcome Screen -->
+  <div class="welcome-screen" id="welcomeScreen">
+    <img class="welcome-img" src="imagenes/portada.png" alt="Marlon y Martha">
+    <div class="welcome-title">Marlon & Martha</div>
+    <div class="welcome-sub">Nos casamos y queremos que estés</div>
+    <button class="welcome-btn" id="enterBtn">Abrir invitación ♥</button>
+  </div>
+
+  <!-- Song Suggestion Modal -->
+  <div class="modal-overlay" id="songModal">
+    <div class="modal">
+      <button class="modal-close" id="closeModal">&times;</button>
+      <div class="modal-title">Sugerir Canción</div>
+      <div class="modal-sub">Tu canción favorita para la fiesta</div>
+      <input type="text" class="modal-input" id="songName" placeholder="Nombre de la canción...">
+      <input type="text" class="modal-input" id="artistName" placeholder="Artista...">
+      <button class="modal-btn" id="sendSongBtn">Enviar por WhatsApp</button>
+    </div>
+  </div>
+
+<div class="page">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-frame-wrap">
+      <div class="hero-frame">
+        <img id="hero-img" src="imagenes/portada.png" alt="Marlon y Martha">
+      </div>
+      <div class="hero-names">
+        <div class="script">Marlon</div>
+        <div class="hero-amp">&</div>
+        <div class="script">Martha</div>
+        <div class="hero-tagline">¡Nos Casamos!</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INTRO ============ -->
+  <section class="intro reveal">
+    <p class="body-text">Nos complace anunciar que hemos decidido unir nuestras vidas en matrimonio.</p>
+    <p class="body-text" style="margin-top:14px;">Este día especial es el comienzo de un nuevo capítulo en nuestra historia, el cual deseamos escribir junto a ustedes, nuestras familias y amigos.</p>
+  </section>
+
+  <!-- ============ COUNTDOWN ============ -->
+  <section class="countdown-section reveal">
+    <span class="eyebrow">Cuenta regresiva</span>
+    <h3 class="display" style="font-size:22px; margin-top:8px;">Para nuestra boda</h3>
+    <div class="countdown-grid">
+      <div class="count-box">
+        <div class="count-num" id="cd-days">00</div>
+        <span class="count-label">Días</span>
+      </div>
+      <div class="count-box">
+        <div class="count-num" id="cd-hours">00</div>
+        <span class="count-label">Horas</span>
+      </div>
+      <div class="count-box">
+        <div class="count-num" id="cd-mins">00</div>
+        <span class="count-label">Min</span>
+      </div>
+      <div class="count-box">
+        <div class="count-num" id="cd-secs">00</div>
+        <span class="count-label">Seg</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PARENTS ============ -->
+  <section class="parents reveal">
+    <svg class="ring-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="22" cy="40" r="14" stroke="#b8924a" stroke-width="2"/>
+      <circle cx="42" cy="40" r="14" stroke="#b8924a" stroke-width="2"/>
+    </svg>
+    <p class="parents-blessing" style="margin-top:16px;">Con la bendición de Dios y en presencia de nuestros padres</p>
+    <div class="parents-grid">
+      <div class="parent-group">
+        <span class="eyebrow">Padres de la novia</span>
+        <p>Jose Cesar De La Roca Ayllon<br>Martha Gutierrez Muñoz</p>
+      </div>
+      <div class="parent-group">
+        <span class="eyebrow">Padres del novio</span>
+        <p>Humberto Dioses Jimenez<br>Carmen Alicia Noe Zavala</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SAVE THE DATE ============ -->
+  <section class="savedate reveal">
+    <h2 class="display script" style="font-size:40px;">Save the Date</h2>
+    <div class="savedate-sub">SETIEMBRE 2026</div>
+    <div class="divider"></div>
+    <div class="savedate-time">♥ &nbsp;5:30 PM</div>
+
+    <div class="calendar">
+      <div class="cal-month">Setiembre 2026</div>
+      <div class="cal-grid">
+        <span class="cal-head">Dom</span><span class="cal-head">Lun</span><span class="cal-head">Mar</span><span class="cal-head">Mié</span><span class="cal-head">Jue</span><span class="cal-head">Vie</span><span class="cal-head">Sáb</span>
+        <span></span><span></span><span class="cal-day">1</span><span class="cal-day">2</span><span class="cal-day">3</span><span class="cal-day">4</span><span class="cal-day">5</span>
+        <span class="cal-day">6</span><span class="cal-day">7</span><span class="cal-day">8</span><span class="cal-day">9</span><span class="cal-day">10</span><span class="cal-day">11</span><span class="cal-day">12</span>
+        <span class="cal-day">13</span><span class="cal-day">14</span><span class="cal-day">15</span><span class="cal-day">16</span><span class="cal-day">17</span><span class="cal-day">18</span><span class="cal-day">19</span>
+        <span class="cal-day">20</span><span class="cal-day">21</span><span class="cal-day">22</span><span class="cal-day">23</span><span class="cal-day">24</span><span class="cal-day">25</span><span class="cal-day highlight" style="display:flex; flex-direction:column; align-items:center; line-height:1.2;">26<br><span style="font-size:14px;">♥</span></span>
+        <span class="cal-day">27</span><span class="cal-day">28</span><span class="cal-day">29</span><span class="cal-day">30</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RING PHOTO ============ -->
+  <section class="ring-photo reveal">
+    <div class="ring-photo-frame">
+      <img src="imagenes/5.jpg" alt="Anillos">
+    </div>
+  </section>
+
+  <!-- ============ CEREMONY ============ -->
+  <section class="ceremony reveal">
+    <img class="ring-icon" src="imagenes/anillos.png" alt="Anillos" style="width:60px;">
+    <h2 class="display" style="margin-top:14px;">CEREMONIA CIVIL<br>RECEPCIÓN</h2>
+    <div class="ceremony-time">5:30 PM</div>
+    <p class="ceremony-address">Parque Hernan Velarde 27,<br>Urbanización Santa Beatriz, Lima</p>
+    <a class="btn" href="https://maps.google.com/?q=Parque+Hernan+Velarde+27+Santa+Beatriz+Lima" target="_blank" rel="noopener">Ver ubicación →</a>
+
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps?q=Parque+Hernan+Velarde+27,+Santa+Beatriz,+Lima&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- ============ ITINERARY ============ -->
+  <section class="itinerary reveal">
+    <h2 class="display script" style="font-size:38px;">Itinerario</h2>
+    <span class="eyebrow">De actividades</span>
+    <div style="margin-top:30px;">
+      <img src="imagenes/Itinerario.png" alt="Itinerario" style="width:100%; border-radius:16px; display:block;">
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="gallery reveal">
+    <span class="eyebrow">Nuestros momentos</span>
+    <div class="gallery-grid">
+      <img class="g1" src="imagenes/3.JPG" alt="Foto pareja 1">
+      <img class="g2" src="imagenes/2.JPG" alt="Foto pareja 2">
+      <img class="g3" src="imagenes/6.JPG" alt="Foto pareja 3">
+    </div>
+  </section>
+
+  <!-- ============ GIFTS ============ -->
+  <section class="gifts reveal">
+    <h2 class="display" style="font-size:22px; letter-spacing:2px;">SUGERENCIAS<br>DE REGALOS</h2>
+    <svg class="gift-icon" viewBox="0 0 64 64" fill="none" stroke="#b8924a" stroke-width="2">
+      <rect x="10" y="26" width="44" height="30" rx="2"/>
+      <rect x="6" y="16" width="52" height="12" rx="2"/>
+      <line x1="32" y1="16" x2="32" y2="56"/>
+      <path d="M32 16c0-8-16-8-16 0s16 0 16 0"/>
+      <path d="M32 16c0-8 16-8 16 0s-16 0-16 0"/>
+    </svg>
+    <p class="body-text" style="margin-top:14px;">Agradecemos de corazón su cariño, cualquier contribución será destinada a comenzar esta nueva etapa.</p>
+
+    <div class="accounts">
+      <div class="acc-block">
+        <div class="acc-bank">BCP</div>
+        <div class="acc-row">
+          Cuenta corriente<br>
+          <span class="acc-num" id="acc1">193-93709691-0-50</span>
+          <button class="copy-btn" data-copy="acc1">Copiar</button>
+        </div>
+        <div class="acc-row" style="margin-top:4px;">
+          CCI: <span class="acc-num">002-193-193709691050-12</span>
+        </div>
+      </div>
+      <div class="acc-block">
+        <div class="acc-bank">Interbank</div>
+        <div class="acc-row">
+          Cuenta de ahorros<br>
+          <span class="acc-num" id="acc2">200-3143321-8-81</span>
+          <button class="copy-btn" data-copy="acc2">Copiar</button>
+        </div>
+        <div class="acc-row" style="margin-top:4px;">
+          CCI: <span class="acc-num">003-200-013143321881-38</span>
+        </div>
+      </div>
+      <div class="acc-block">
+        <div class="acc-bank">Yape / Plin</div>
+        <div class="acc-row">
+          <span class="acc-num" id="acc3">+51 937 282 351</span>
+          <button class="copy-btn" data-copy="acc3">Copiar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ROMANTIC PHOTO ============ -->
+  <section class="romantic-photo reveal">
+    <img src="imagenes/marlon-y-martha-de-noche.jpg" alt="Marlon y Martha de noche">
+  </section>
+
+  <!-- ============ SONGS ============ -->
+  <section class="songs reveal">
+    <div style="display:flex; align-items:center; justify-content:center; gap:8px;"><img src="imagenes/musica.png" alt="Musica" style="width:28px; filter: invert(52%) sepia(67%) saturate(441%) hue-rotate(357deg) brightness(93%) contrast(89%);"><span style="font-size:24px;">♡</span></div>
+    <h3 class="display" style="font-size:20px; letter-spacing:2px; margin-top:10px;">SUGERENCIAS<br>DE CANCIONES</h3>
+    <p class="body-text">Tu música también será parte de nuestra historia. Déjanos la canción que no puede faltar en la pista de baile.</p>
+    <a class="btn" id="song-btn" href="#" target="_blank" rel="noopener">Sugerir →</a>
+  </section>
+
+  <!-- ============ FINAL PHOTO ============ -->
+  <section class="romantic-photo reveal">
+    <img src="imagenes/foto-celebracion.jpg" alt="Celebración">
+  </section>
+
+  <!-- ============ CONFIRM ============ -->
+  <section class="confirm reveal">
+    <img class="ring-icon" src="imagenes/corazones-enrredados.png" alt="Corazones" style="width:80px; filter: invert(52%) sepia(67%) saturate(441%) hue-rotate(357deg) brightness(93%) contrast(89%);">
+    <h2 class="display" style="font-size:20px; letter-spacing:2px; margin-top:14px;">CONFIRMA TU ASISTENCIA</h2>
+    <p class="body-text">Agradeceremos su confirmación de asistencia antes del</p>
+    <div class="confirm-date">15 de Julio del 2026</div>
+    <a class="btn filled" id="confirm-btn-inline" href="#" target="_blank" rel="noopener" style="margin-top:22px;">Confirmar por WhatsApp</a>
+    <p class="body-text" style="font-size:14px; margin-top:20px; color:var(--ink-soft); line-height:1.6;">
+      <strong>Nota importante:</strong> Esta invitación es personal. Por favor confirma tu asistencia especificando si vienes solo/a o con acompañante(s) para poder organizar todo perfectamente.
+    </p>
+  </section>
+
+  <footer class="reveal">Marlon &amp; Martha · 26 . 09 . 2026</footer>
+
+</div>
+
+<!-- Floating music toggle -->
+<button class="music-toggle" id="music-toggle" aria-label="Activar o silenciar música">
+  <svg id="music-icon-on" viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+  <svg id="music-icon-off" viewBox="0 0 24 24" style="display:none;"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6zM3 3l18 18-1.4 1.4L3 4.4 4.4 3z"/></svg>
+</button>
+<div id="yt-player-wrap"><div id="yt-player"></div></div>
+
+<!-- Floating confirm button -->
+<a class="float-confirm" id="confirm-btn-float" href="#" target="_blank" rel="noopener">
+  <svg viewBox="0 0 32 32"><path d="M16.04 3C9.37 3 3.97 8.4 3.97 15.07c0 2.31.63 4.47 1.74 6.33L3 29l7.78-2.62a12.1 12.1 0 0 0 5.26 1.2h.01c6.67 0 12.07-5.4 12.07-12.07C28.12 8.4 22.72 3 16.04 3zm0 21.85h-.01a9.78 9.78 0 0 1-4.98-1.36l-.36-.21-3.71 1.25 1.23-3.61-.23-.37a9.77 9.77 0 0 1-1.5-5.21c0-5.4 4.4-9.79 9.81-9.79 2.62 0 5.08 1.02 6.93 2.87a9.74 9.74 0 0 1 2.87 6.93c0 5.41-4.4 9.81-9.81 9.81zm5.38-7.34c-.29-.15-1.74-.86-2.01-.96-.27-.1-.47-.15-.66.15-.2.29-.76.96-.93 1.16-.17.2-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.44-.86-.77-1.45-1.71-1.62-2-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.66-1.59-.9-2.18-.24-.57-.48-.49-.66-.5h-.56c-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.44s1.05 2.83 1.2 3.03c.15.2 2.06 3.15 5 4.41.7.3 1.24.48 1.67.62.7.22 1.34.19 1.84.12.56-.08 1.74-.71 1.98-1.4.25-.69.25-1.27.17-1.4-.07-.12-.27-.2-.56-.34z"/></svg>
+  Confirmar asistencia
+</a>
+
+<script>
+  // ---------- Background music (YouTube) Variables ----------
+  const YT_VIDEO_ID = 'vGJTaP6anOU';
+  let ytPlayer = null;
+  let ytReady = false;
+  let userWantsMusic = true;
+  let musicStarted = false;
+  const musicToggle = document.getElementById('music-toggle');
+  const iconOn = document.getElementById('music-icon-on');
+  const iconOff = document.getElementById('music-icon-off');
+
+  function setMusicIcon(playing){
+    iconOn.style.display = playing ? 'block' : 'none';
+    iconOff.style.display = playing ? 'none' : 'block';
+    musicToggle.classList.toggle('is-playing', playing);
+  }
+  setMusicIcon(false);
+
+  // ---------- Welcome Screen ----------
+  const welcomeScreen = document.getElementById('welcomeScreen');
+  const enterBtn = document.getElementById('enterBtn');
+
+  function openInvitation(){
+    welcomeScreen.classList.add('hidden');
+    musicStarted = true;
+    if(ytReady && userWantsMusic){
+      ytPlayer.playVideo();
+      setMusicIcon(true);
+    }
+  }
+
+  enterBtn.addEventListener('click', openInvitation);
+  welcomeScreen.addEventListener('click', (e)=>{
+    if(e.target === welcomeScreen){
+      openInvitation();
+    }
+  });
+
+  // ---------- Reveal on scroll ----------
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('show');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  // ---------- Countdown ----------
+  // Fecha de la boda: 26 de Setiembre 2026, 5:30 PM (hora de Lima, UTC-5)
+  const weddingDate = new Date('2026-09-26T17:30:00-05:00').getTime();
+
+  function updateCountdown(){
+    const now = new Date().getTime();
+    const diff = weddingDate - now;
+
+    if(diff <= 0){
+      document.getElementById('cd-days').textContent = '00';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-mins').textContent = '00';
+      document.getElementById('cd-secs').textContent = '00';
+      return;
+    }
+
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const secs = Math.floor((diff % (1000*60)) / 1000);
+
+    document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ---------- Copy account numbers ----------
+  document.querySelectorAll('.copy-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const targetId = btn.getAttribute('data-copy');
+      const text = document.getElementById(targetId).textContent.trim();
+      navigator.clipboard.writeText(text).then(()=>{
+        const original = btn.textContent;
+        btn.textContent = 'Copiado ✓';
+        btn.classList.add('copied');
+        setTimeout(()=>{
+          btn.textContent = original;
+          btn.classList.remove('copied');
+        }, 1800);
+      });
+    });
+  });
+
+  // ---------- WhatsApp confirm links ----------
+  // ⚠️ Reemplaza el número de teléfono (formato: codigo de pais + numero, sin + ni espacios)
+  const whatsappNumber = '51937282351';
+  const confirmMessage = encodeURIComponent('¡Hola! Quiero confirmar mi asistencia a la boda de Marlon y Martha 💍🎉');
+
+  const confirmUrl = `https://wa.me/${whatsappNumber}?text=${confirmMessage}`;
+
+  document.getElementById('confirm-btn-inline').href = confirmUrl;
+  document.getElementById('confirm-btn-float').href = confirmUrl;
+
+  // ---------- Song Suggestion Modal ----------
+  const songBtn = document.getElementById('song-btn');
+  const songModal = document.getElementById('songModal');
+  const closeModalBtn = document.getElementById('closeModal');
+  const sendSongBtn = document.getElementById('sendSongBtn');
+  const songNameInput = document.getElementById('songName');
+  const artistNameInput = document.getElementById('artistName');
+
+  songBtn.addEventListener('click', (e)=>{
+    e.preventDefault();
+    songModal.classList.add('show');
+  });
+
+  closeModalBtn.addEventListener('click', ()=>{
+    songModal.classList.remove('show');
+  });
+
+  songModal.addEventListener('click', (e)=>{
+    if(e.target === songModal){
+      songModal.classList.remove('show');
+    }
+  });
+
+  sendSongBtn.addEventListener('click', ()=>{
+    const song = songNameInput.value.trim();
+    const artist = artistNameInput.value.trim();
+    let message = '¡Hola! Aquí está la canción que sugiero para la boda 🎶:';
+    if(song) message += `\n🎵 Canción: ${song}`;
+    if(artist) message += `\n🎤 Artista: ${artist}`;
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+    songModal.classList.remove('show');
+    songNameInput.value = '';
+    artistNameInput.value = '';
+  });
+
+  // Carga la API de YouTube IFrame
+  const ytScript = document.createElement('script');
+  ytScript.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(ytScript);
+
+  window.onYouTubeIframeAPIReady = function(){
+    ytPlayer = new YT.Player('yt-player', {
+      videoId: YT_VIDEO_ID,
+      playerVars:{
+        autoplay:0,
+        controls:0,
+        loop:1,
+        playlist:YT_VIDEO_ID,
+        playsinline:1,
+        modestbranding:1,
+        disablekb:1,
+        fs:0
+      },
+      events:{
+        onReady: function(){
+          ytReady = true;
+          ytPlayer.setVolume(70);
+        }
+      }
+    });
+  };
+
+  musicToggle.addEventListener('click', ()=>{
+    if(!ytReady) return;
+
+    musicStarted = true;
+    userWantsMusic = !userWantsMusic;
+
+    if(userWantsMusic){
+      ytPlayer.playVideo();
+      setMusicIcon(true);
+    } else {
+      ytPlayer.pauseVideo();
+      setMusicIcon(false);
+    }
+  });
+
+</script>
+
+</body>
+</html>
